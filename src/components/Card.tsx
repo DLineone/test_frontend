@@ -11,7 +11,7 @@ const bnbAdress = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
 
 export default function Card() {
     const { sdk, connected, connecting } = useSDK();
-    const [account, setAccount] = useState<stgin | null>(null);
+    const [account, setAccount] = useState<string | null>(null);
     const [bnbBalance, setBnbBalance] = useState<number | null>(null);
     const [ethBalance, setEthBalance] = useState<number | null>(null);
 
