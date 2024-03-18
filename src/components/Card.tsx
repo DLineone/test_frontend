@@ -12,8 +12,8 @@ const bnbAdress = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
 export default function Card() {
     const { sdk, connected, connecting } = useSDK();
     const [account, setAccount] = useState<string | null>(null);
-    const [bnbBalance, setBnbBalance] = useState<number | null>(null);
-    const [ethBalance, setEthBalance] = useState<number | null>(null);
+    const [bnbBalance, setBnbBalance] = useState<string | null>(null);
+    const [ethBalance, setEthBalance] = useState<string | null>(null);
 
 
     useEffect(() => {
@@ -25,12 +25,12 @@ export default function Card() {
 
                 const web3 = new Web3(window.ethereum);
                 const ethBalance = await web3.eth.getBalance(accounts[0]);
-                setEthBalance(parseInt(ethBalance));
+                setEthBalance(ethBalance.toString());
 
 
                 const contract = new web3.eth.Contract(bnbAbi, bnbAdress);
                 const bnbBalance = await contract.methods.balanceOf(accounts[0]).call();
-                setBnbBalance(parseInt(bnbBalance))
+                setBnbBalance(bnbBalance.toString())
 
             } catch (err) {
                 console.warn(`No accounts found!!!`, err);
